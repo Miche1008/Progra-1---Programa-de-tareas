@@ -6,12 +6,16 @@
 package Inicio;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Miche
  */
 public class Login extends javax.swing.JFrame {
+    
+    public static ArrayList<Datos_Usuarios> ArrayUsuarios = new ArrayList<Datos_Usuarios>();
 
     /**
      * Creates new form Login
@@ -117,6 +121,11 @@ public class Login extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(56, 107, 173));
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.setPreferredSize(new java.awt.Dimension(144, 42));
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -350,6 +359,23 @@ public class Login extends javax.swing.JFrame {
     private void CheckBox_VerContraseñaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckBox_VerContraseñaMousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_CheckBox_VerContraseñaMousePressed
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+        
+        try {
+            
+            Datos_Usuarios U = new Datos_Usuarios(Txt_Usuario_Login.getText(), Password_Field.getText(), Txt_Nombre_Login.getText(), Txt_Apellidos_Login.getText(), Txt_Correo_Login.getText());
+
+            ArrayUsuarios.add(U);
+            
+            Envío_de_Correos C = new Envío_de_Correos(Txt_Correo_Login.getText(), Txt_Nombre_Login.getText(), Txt_Usuario_Login.getText(), Password_Field.getText());
+            C.Envio_de_Correos();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Error, verifique sus datos");
+        }
+
+    }//GEN-LAST:event_jPanel2MouseClicked
 
     /**
      * @param args the command line arguments

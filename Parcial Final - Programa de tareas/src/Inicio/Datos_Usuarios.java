@@ -6,8 +6,8 @@ public class Datos_Usuarios {
     private String nombre;
     private String apellido;
     private String correo;
-    private  String usuario;
-    private  String contraseña;
+    public static String usuario;
+    public static String contraseña;
 
     public Datos_Usuarios() {
     }    
