@@ -5,6 +5,11 @@
  */
 package Inicio;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Miche
@@ -12,12 +17,16 @@ package Inicio;
 public class Programa_de_Tareas extends javax.swing.JFrame {
     
     String usuario;
+    
+    ArrayList ArrayTarea = new ArrayList();
+    DefaultListModel modelo = new DefaultListModel();
 
     /**
      * Creates new form Programa_de_Tareas
      */
     public Programa_de_Tareas() {
         initComponents();
+        List_Tareas.setModel(modelo);
     }
     
     public Programa_de_Tareas(String usuario) {
@@ -37,13 +46,55 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
 
         Panel_Ventana_Tareas = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        Button_Mostrar = new javax.swing.JButton();
+        Button_Ocultar = new javax.swing.JButton();
+        Button_Agregar_Tarea = new javax.swing.JButton();
+        Txt_Buscar = new javax.swing.JTextField();
+        Button_Buscar = new javax.swing.JButton();
+        Button_Actualizar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        List_Tareas = new javax.swing.JList<>();
+        Txt_Agregar_Tarea = new javax.swing.JTextField();
+        DateChooser_Calendario = new com.toedter.calendar.JDateChooser();
+        Button_Agregar_Fecha = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Panel_Ventana_Tareas.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(56, 107, 173));
         jLabel1.setText("Tareas");
+
+        Button_Mostrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        Button_Mostrar.setText("Mostrar tareas");
+
+        Button_Ocultar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        Button_Ocultar.setText("Ocultar tareas");
+
+        Button_Agregar_Tarea.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        Button_Agregar_Tarea.setText("Agregar tarea");
+        Button_Agregar_Tarea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Agregar_TareaActionPerformed(evt);
+            }
+        });
+
+        Button_Buscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        Button_Buscar.setText("Buscar");
+
+        Button_Actualizar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        Button_Actualizar.setText("Actualizar registros");
+
+        jScrollPane1.setViewportView(List_Tareas);
+
+        Button_Agregar_Fecha.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        Button_Agregar_Fecha.setText("Agregar fecha");
+        Button_Agregar_Fecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Agregar_FechaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Panel_Ventana_TareasLayout = new javax.swing.GroupLayout(Panel_Ventana_Tareas);
         Panel_Ventana_Tareas.setLayout(Panel_Ventana_TareasLayout);
@@ -51,15 +102,62 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
             Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panel_Ventana_TareasLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(jLabel1)
-                .addContainerGap(536, Short.MAX_VALUE))
+                .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Panel_Ventana_TareasLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 269, Short.MAX_VALUE)
+                        .addComponent(Button_Mostrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Button_Ocultar)
+                        .addContainerGap(20, Short.MAX_VALUE))
+                    .addGroup(Panel_Ventana_TareasLayout.createSequentialGroup()
+                        .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Panel_Ventana_TareasLayout.createSequentialGroup()
+                                .addComponent(Txt_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Button_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Button_Actualizar))
+                            .addGroup(Panel_Ventana_TareasLayout.createSequentialGroup()
+                                .addComponent(Button_Agregar_Tarea)
+                                .addGap(18, 18, 18)
+                                .addComponent(Button_Agregar_Fecha))
+                            .addGroup(Panel_Ventana_TareasLayout.createSequentialGroup()
+                                .addComponent(Txt_Agregar_Tarea, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(DateChooser_Calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         Panel_Ventana_TareasLayout.setVerticalGroup(
             Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panel_Ventana_TareasLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jLabel1)
-                .addContainerGap(487, Short.MAX_VALUE))
+                .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(Panel_Ventana_TareasLayout.createSequentialGroup()
+                        .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Panel_Ventana_TareasLayout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(Button_Ocultar)
+                                    .addComponent(Button_Mostrar)))
+                            .addGroup(Panel_Ventana_TareasLayout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(jLabel1)))
+                        .addGap(103, 103, 103)
+                        .addComponent(Txt_Agregar_Tarea, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DateChooser_Calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Button_Agregar_Tarea)
+                    .addComponent(Button_Agregar_Fecha))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Txt_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Buscar)
+                    .addComponent(Button_Actualizar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -70,11 +168,31 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Panel_Ventana_Tareas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Panel_Ventana_Tareas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Button_Agregar_TareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Agregar_TareaActionPerformed
+        
+        String dato = Txt_Agregar_Tarea.getText();
+        modelo.addElement(dato);
+        
+    }//GEN-LAST:event_Button_Agregar_TareaActionPerformed
+
+    private void Button_Agregar_FechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Agregar_FechaActionPerformed
+  
+        String día = Integer.toString(DateChooser_Calendario.getCalendar().get(Calendar.DAY_OF_MONTH));
+        String mes = Integer.toString(DateChooser_Calendario.getCalendar().get(Calendar.MONTH));
+        String año = Integer.toString(DateChooser_Calendario.getCalendar().get(Calendar.YEAR));
+        String Fecha = (día + "/" + mes + "/" + año);
+        
+        modelo.addElement(Fecha);
+        
+    }//GEN-LAST:event_Button_Agregar_FechaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -112,7 +230,18 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Button_Actualizar;
+    private javax.swing.JButton Button_Agregar_Fecha;
+    private javax.swing.JButton Button_Agregar_Tarea;
+    private javax.swing.JButton Button_Buscar;
+    private javax.swing.JButton Button_Mostrar;
+    private javax.swing.JButton Button_Ocultar;
+    private com.toedter.calendar.JDateChooser DateChooser_Calendario;
+    private javax.swing.JList<String> List_Tareas;
     private javax.swing.JPanel Panel_Ventana_Tareas;
+    private javax.swing.JTextField Txt_Agregar_Tarea;
+    private javax.swing.JTextField Txt_Buscar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
