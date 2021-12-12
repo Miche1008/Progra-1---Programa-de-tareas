@@ -10,6 +10,8 @@ package Inicio;
  * @author Miche
  */
 public class Programa_de_Tareas extends javax.swing.JFrame {
+    
+    String usuario;
 
     /**
      * Creates new form Programa_de_Tareas
@@ -17,6 +19,12 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
     public Programa_de_Tareas() {
         initComponents();
     }
+    
+    public Programa_de_Tareas(String usuario) {
+        this.usuario = usuario;
+    }
+   
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,17 +35,42 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Panel_Ventana_Tareas = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        Panel_Ventana_Tareas.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("Tareas");
+
+        javax.swing.GroupLayout Panel_Ventana_TareasLayout = new javax.swing.GroupLayout(Panel_Ventana_Tareas);
+        Panel_Ventana_Tareas.setLayout(Panel_Ventana_TareasLayout);
+        Panel_Ventana_TareasLayout.setHorizontalGroup(
+            Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Panel_Ventana_TareasLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel1)
+                .addContainerGap(536, Short.MAX_VALUE))
+        );
+        Panel_Ventana_TareasLayout.setVerticalGroup(
+            Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Panel_Ventana_TareasLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jLabel1)
+                .addContainerGap(487, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(Panel_Ventana_Tareas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(Panel_Ventana_Tareas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -79,5 +112,7 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Panel_Ventana_Tareas;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,6 +6,7 @@
 package Inicio;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -67,7 +68,7 @@ public class Inicio_de_Sesión extends javax.swing.JFrame {
         Panel_Registrarse.setBackground(new java.awt.Color(56, 107, 173));
         Panel_Registrarse.setForeground(new java.awt.Color(0, 102, 204));
         Panel_Registrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Panel_Registrarse.setPreferredSize(new java.awt.Dimension(160, 48));
+        Panel_Registrarse.setPreferredSize(new java.awt.Dimension(157, 48));
         Panel_Registrarse.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Panel_RegistrarseMouseClicked(evt);
@@ -85,7 +86,7 @@ public class Inicio_de_Sesión extends javax.swing.JFrame {
             .addGroup(Panel_RegistrarseLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(jLabel5)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         Panel_RegistrarseLayout.setVerticalGroup(
             Panel_RegistrarseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,6 +98,11 @@ public class Inicio_de_Sesión extends javax.swing.JFrame {
 
         Panel_Ingresar.setBackground(new java.awt.Color(56, 107, 173));
         Panel_Ingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Panel_Ingresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Panel_IngresarMouseClicked(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -150,18 +156,6 @@ public class Inicio_de_Sesión extends javax.swing.JFrame {
             .addGroup(Panel_IngresoLayout.createSequentialGroup()
                 .addGroup(Panel_IngresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Panel_IngresoLayout.createSequentialGroup()
-                        .addGroup(Panel_IngresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Panel_IngresoLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel4))
-                            .addGroup(Panel_IngresoLayout.createSequentialGroup()
-                                .addGap(146, 146, 146)
-                                .addComponent(Panel_Ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(Panel_IngresoLayout.createSequentialGroup()
-                                .addGap(148, 148, 148)
-                                .addComponent(Panel_Registrarse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(Panel_IngresoLayout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addGroup(Panel_IngresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Panel_IngresoLayout.createSequentialGroup()
@@ -181,8 +175,21 @@ public class Inicio_de_Sesión extends javax.swing.JFrame {
                                             .addComponent(Password_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(25, 25, 25))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                                .addComponent(CheckBox_VerContraseña_Ingreso, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(CheckBox_VerContraseña_Ingreso, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(Panel_IngresoLayout.createSequentialGroup()
+                        .addGroup(Panel_IngresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Panel_IngresoLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel4))
+                            .addGroup(Panel_IngresoLayout.createSequentialGroup()
+                                .addGap(146, 146, 146)
+                                .addComponent(Panel_Ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(Panel_IngresoLayout.createSequentialGroup()
+                .addGap(147, 147, 147)
+                .addComponent(Panel_Registrarse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Panel_IngresoLayout.setVerticalGroup(
             Panel_IngresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,6 +272,36 @@ public class Inicio_de_Sesión extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_CheckBox_VerContraseña_IngresoMouseClicked
+
+    private void Panel_IngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel_IngresarMouseClicked
+
+        String usuario = Txt_Usuario.getText();
+        String contraseña = Password_Field.getText();
+
+        boolean encontrar = false;
+
+        for (int i = 0; i < Login.ArrayUsuarios.size(); i++) {
+            if (Login.ArrayUsuarios.get(i).getUsuario().equals(usuario) && Login.ArrayUsuarios.get(i).getContraseña().equals(contraseña)) {
+                encontrar = true;
+                break;
+            } else {
+                encontrar = false;
+            }
+
+        }
+        if (encontrar) {
+            JOptionPane.showMessageDialog(rootPane, "Bienvenido");
+            new Programa_de_Tareas(Txt_Usuario.getText()).setVisible(true);
+            this.dispose();
+
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Informacion incorrecta, por favor verifique su usuario y contraseña");
+            Inicio_de_Sesión I = new Inicio_de_Sesión();
+            I.setVisible(true);
+            this.dispose();
+        }
+
+    }//GEN-LAST:event_Panel_IngresarMouseClicked
 
     /**
      * @param args the command line arguments
