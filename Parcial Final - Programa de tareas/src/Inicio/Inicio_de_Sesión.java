@@ -285,7 +285,7 @@ public class Inicio_de_Sesión extends javax.swing.JFrame {
         }
         if (encontrar) {
             JOptionPane.showMessageDialog(rootPane, "Bienvenido");
-            new Programa_de_Tareas().setVisible(true);
+            new Tareas_Pendientes().setVisible(true);
             this.dispose();
 
         } else {
