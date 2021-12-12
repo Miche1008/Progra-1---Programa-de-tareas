@@ -13,7 +13,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -21,18 +23,25 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Programa_de_Tareas extends javax.swing.JFrame {
 
+    Tareas_Pendientes T = new Tareas_Pendientes();
     String usuario;
 
     /**
      * Creates new form Programa_de_Tareas
      */
     ArrayList<Datos_Tarea> ArrayTareas;
-    DefaultTableModel Tabla;
 
     public Programa_de_Tareas() {
         initComponents();
         ArrayTareas = new ArrayList<Datos_Tarea>();
-        Tabla = (DefaultTableModel) Tabla_Tareas.getModel();
+
+    }
+    
+     public void AgregarCheckBox(int column, JTable table) {
+
+        TableColumn tc = table.getColumnModel().getColumn(column);
+        tc.setCellEditor(table.getDefaultEditor(boolean.class));
+        tc.setCellRenderer(table.getDefaultRenderer(boolean.class));       
     }
 
     public Programa_de_Tareas(String usuario) {
@@ -50,12 +59,7 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
 
         Panel_Ventana_Tareas = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        Txt_Buscar = new javax.swing.JTextField();
-        Button_Buscar = new javax.swing.JButton();
-        Button_Actualizar = new javax.swing.JButton();
         Txt_Agregar_Tarea = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Tabla_Tareas = new javax.swing.JTable();
         Txt_Responsable = new javax.swing.JTextField();
         Txt_Fecha = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -70,30 +74,6 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(56, 107, 173));
         jLabel1.setText("Tareas");
-
-        Button_Buscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        Button_Buscar.setText("Buscar");
-
-        Button_Actualizar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        Button_Actualizar.setText("Actualizar registros");
-
-        Tabla_Tareas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Tarea", "Responsable de la tarea", "Fecha"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(Tabla_Tareas);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Tarea:");
@@ -124,7 +104,6 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(Panel_Ventana_TareasLayout.createSequentialGroup()
                         .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -134,14 +113,8 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
                         .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Txt_Agregar_Tarea, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Txt_Responsable, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Txt_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(Panel_Ventana_TareasLayout.createSequentialGroup()
-                        .addComponent(Txt_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Button_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Button_Actualizar)))
-                .addGap(0, 151, Short.MAX_VALUE))
+                            .addComponent(Txt_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 165, Short.MAX_VALUE))
         );
         Panel_Ventana_TareasLayout.setVerticalGroup(
             Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,14 +135,7 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addComponent(Button_Guardar_Tarea)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Txt_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button_Buscar)
-                    .addComponent(Button_Actualizar))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -180,9 +146,7 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Panel_Ventana_Tareas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(Panel_Ventana_Tareas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -190,25 +154,16 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
 
     private void Button_Guardar_TareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Guardar_TareaActionPerformed
 
-        try {
-
-            Datos_Tarea D = new Datos_Tarea();
-
-            D.setTarea(Txt_Agregar_Tarea.getText());
-            D.setResponsable(Txt_Responsable.getText());
-            D.setFecha(Txt_Fecha.getText());
-
-            ArrayTareas.add(D);
-
-            Tabla.addRow(new Object[]{
-                D.getTarea(),
-                D.getResponsable(),
-                D.getFecha(),});
-
-        } catch (Exception e) {
-        }
-
-
+        Tareas_Pendientes T = new Tareas_Pendientes();
+        T.setVisible(true);
+        String tarea = Txt_Agregar_Tarea.getText();
+        String responsable = Txt_Responsable.getText();
+        String fecha = Txt_Fecha.getText();
+        
+        String Datos[] = {tarea, responsable, fecha};
+        
+        Tareas_Pendientes.Tabla.addRow(Datos);
+        
     }//GEN-LAST:event_Button_Guardar_TareaActionPerformed
 
     /**
@@ -247,19 +202,14 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Button_Actualizar;
-    private javax.swing.JButton Button_Buscar;
     private javax.swing.JButton Button_Guardar_Tarea;
     private javax.swing.JPanel Panel_Ventana_Tareas;
-    private javax.swing.JTable Tabla_Tareas;
-    private javax.swing.JTextField Txt_Agregar_Tarea;
-    private javax.swing.JTextField Txt_Buscar;
-    private javax.swing.JTextField Txt_Fecha;
-    private javax.swing.JTextField Txt_Responsable;
+    public static javax.swing.JTextField Txt_Agregar_Tarea;
+    public static javax.swing.JTextField Txt_Fecha;
+    public static javax.swing.JTextField Txt_Responsable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

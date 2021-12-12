@@ -15,7 +15,7 @@ import javax.swing.table.TableColumn;
  */
 public class Tareas_Pendientes extends javax.swing.JFrame {
 
-    DefaultTableModel Tabla;
+    public static DefaultTableModel Tabla;
 
     /**
      * Creates new form Tareas_Pendientes
@@ -23,15 +23,14 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
     public Tareas_Pendientes() {
         initComponents();
         Tabla = (DefaultTableModel) Tabla_Tareas_Pendientes.getModel();
-        
-        //AgregarCheckBox(3, Tabla_Tareas_Pendientes);
+        AgregarCheckBox(3, Tabla_Tareas_Pendientes);
     }
 
     public void AgregarCheckBox(int column, JTable table) {
 
-       // TableColumn tc = table.getColumnModel().getColumn(column);
-       // tc.setCellEditor(table.getDefaultEditor(boolean.class));
-        //tc.setCellRenderer(table.getDefaultRenderer(boolean.class));
+        TableColumn tc = table.getColumnModel().getColumn(column);
+        tc.setCellEditor(table.getDefaultEditor(boolean.class));
+        tc.setCellRenderer(table.getDefaultRenderer(boolean.class));
         
     }
 
@@ -63,11 +62,11 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Tarea", "Fecha", "Asignada a:"
+                "Tarea", "Responsable de la tarea", "Fecha", "Seleccionar"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -101,7 +100,7 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Button_Finalizar_Tarea)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -159,7 +158,7 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button_Finalizar_Tarea;
-    private javax.swing.JTable Tabla_Tareas_Pendientes;
+    public static javax.swing.JTable Tabla_Tareas_Pendientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
