@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
     
-    public static ArrayList<Datos_Usuarios> ArrayUsuarios = new ArrayList<Datos_Usuarios>();
+    public static ArrayList<Datos_Usuarios> Array = new ArrayList<Datos_Usuarios>();
 
     /**
      * Creates new form Login
@@ -46,9 +46,9 @@ public class Login extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
-        jPanel2 = new javax.swing.JPanel();
+        Panel_Crear_Usuario = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        Panel_Iniciar_Sesión = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         Password_Field = new javax.swing.JPasswordField();
         CheckBox_VerContraseña = new javax.swing.JCheckBox();
@@ -118,12 +118,12 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(56, 107, 173));
-        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.setPreferredSize(new java.awt.Dimension(144, 42));
-        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        Panel_Crear_Usuario.setBackground(new java.awt.Color(56, 107, 173));
+        Panel_Crear_Usuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Panel_Crear_Usuario.setPreferredSize(new java.awt.Dimension(144, 42));
+        Panel_Crear_Usuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel2MouseClicked(evt);
+                Panel_Crear_UsuarioMouseClicked(evt);
             }
         });
 
@@ -131,28 +131,28 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Crear usuario");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout Panel_Crear_UsuarioLayout = new javax.swing.GroupLayout(Panel_Crear_Usuario);
+        Panel_Crear_Usuario.setLayout(Panel_Crear_UsuarioLayout);
+        Panel_Crear_UsuarioLayout.setHorizontalGroup(
+            Panel_Crear_UsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Panel_Crear_UsuarioLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel3)
                 .addContainerGap(24, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        Panel_Crear_UsuarioLayout.setVerticalGroup(
+            Panel_Crear_UsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Panel_Crear_UsuarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(56, 107, 173));
-        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        Panel_Iniciar_Sesión.setBackground(new java.awt.Color(56, 107, 173));
+        Panel_Iniciar_Sesión.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Panel_Iniciar_Sesión.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel3MouseClicked(evt);
+                Panel_Iniciar_SesiónMouseClicked(evt);
             }
         });
 
@@ -160,18 +160,18 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Iniciar sesión");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout Panel_Iniciar_SesiónLayout = new javax.swing.GroupLayout(Panel_Iniciar_Sesión);
+        Panel_Iniciar_Sesión.setLayout(Panel_Iniciar_SesiónLayout);
+        Panel_Iniciar_SesiónLayout.setHorizontalGroup(
+            Panel_Iniciar_SesiónLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_Iniciar_SesiónLayout.createSequentialGroup()
                 .addContainerGap(27, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(19, 19, 19))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        Panel_Iniciar_SesiónLayout.setVerticalGroup(
+            Panel_Iniciar_SesiónLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Panel_Iniciar_SesiónLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addContainerGap(14, Short.MAX_VALUE))
@@ -213,7 +213,7 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(Panel_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_LoginLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(Panel_Iniciar_Sesión, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(Panel_LoginLayout.createSequentialGroup()
                                 .addGroup(Panel_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Txt_Correo_Login, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -243,7 +243,7 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(Panel_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Panel_LoginLayout.createSequentialGroup()
                                 .addGap(137, 137, 137)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(Panel_Crear_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(Panel_LoginLayout.createSequentialGroup()
                                 .addGap(114, 114, 114)
                                 .addComponent(jLabel2)))
@@ -280,9 +280,9 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Panel_Crear_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Panel_Iniciar_Sesión, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -332,13 +332,13 @@ public class Login extends javax.swing.JFrame {
         
     }//GEN-LAST:event_Txt_Usuario_LoginMousePressed
 
-    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+    private void Panel_Iniciar_SesiónMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel_Iniciar_SesiónMouseClicked
 
         Inicio_de_Sesión I = new Inicio_de_Sesión();
         I.setVisible(true);
         this.dispose();
         
-    }//GEN-LAST:event_jPanel3MouseClicked
+    }//GEN-LAST:event_Panel_Iniciar_SesiónMouseClicked
 
     private void Password_FieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Password_FieldMousePressed
 
@@ -360,13 +360,13 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CheckBox_VerContraseñaMousePressed
 
-    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+    private void Panel_Crear_UsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel_Crear_UsuarioMouseClicked
         
         try {
             
-            Datos_Usuarios U = new Datos_Usuarios(Txt_Usuario_Login.getText(), Password_Field.getText(), Txt_Nombre_Login.getText(), Txt_Apellidos_Login.getText(), Txt_Correo_Login.getText());
+            Datos_Usuarios U = new Datos_Usuarios(Txt_Nombre_Login.getText(), Txt_Apellidos_Login.getText(), Txt_Correo_Login.getText(), Txt_Usuario_Login.getText(), Password_Field.getText());
 
-            ArrayUsuarios.add(U);
+            Array.add(U);
             
             Envío_de_Correos C = new Envío_de_Correos(Txt_Correo_Login.getText(), Txt_Nombre_Login.getText(), Txt_Usuario_Login.getText(), Password_Field.getText());
             C.Envio_de_Correos();
@@ -375,7 +375,7 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Error, verifique sus datos");
         }
 
-    }//GEN-LAST:event_jPanel2MouseClicked
+    }//GEN-LAST:event_Panel_Crear_UsuarioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -414,6 +414,8 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox CheckBox_VerContraseña;
+    private javax.swing.JPanel Panel_Crear_Usuario;
+    private javax.swing.JPanel Panel_Iniciar_Sesión;
     private javax.swing.JPanel Panel_Login;
     private javax.swing.JPasswordField Password_Field;
     private javax.swing.JTextField Txt_Apellidos_Login;
@@ -425,8 +427,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;

@@ -6,6 +6,7 @@
 package Inicio;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -241,13 +242,6 @@ public class Inicio_de_Sesión extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Txt_UsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_UsuarioMousePressed
-
-        Txt_Usuario.setText("");
-        Txt_Usuario.setForeground(Color.black);
-
-    }//GEN-LAST:event_Txt_UsuarioMousePressed
-
     private void Panel_RegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel_RegistrarseMouseClicked
 
         Login L = new Login();
@@ -280,8 +274,8 @@ public class Inicio_de_Sesión extends javax.swing.JFrame {
 
         boolean encontrar = false;
 
-        for (int i = 0; i < Login.ArrayUsuarios.size(); i++) {
-            if (Login.ArrayUsuarios.get(i).getUsuario().equals(usuario) && Login.ArrayUsuarios.get(i).getContraseña().equals(contraseña)) {
+        for (int i = 0; i < Login.Array.size(); i++) {
+            if (Login.Array.get(i).getUsuario().equals(usuario) && Login.Array.get(i).getContraseña().equals(contraseña)) {
                 encontrar = true;
                 break;
             } else {
@@ -291,7 +285,7 @@ public class Inicio_de_Sesión extends javax.swing.JFrame {
         }
         if (encontrar) {
             JOptionPane.showMessageDialog(rootPane, "Bienvenido");
-            new Programa_de_Tareas(Txt_Usuario.getText()).setVisible(true);
+            new Programa_de_Tareas().setVisible(true);
             this.dispose();
 
         } else {
@@ -302,6 +296,12 @@ public class Inicio_de_Sesión extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_Panel_IngresarMouseClicked
+
+    private void Txt_UsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_UsuarioMousePressed
+
+        Txt_Usuario.setText("");
+        Txt_Usuario.setForeground(Color.black);
+    }//GEN-LAST:event_Txt_UsuarioMousePressed
 
     /**
      * @param args the command line arguments
