@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,44 +30,51 @@ import javax.swing.table.TableColumn;
  * @author Miche
  */
 public class Tareas_Pendientes extends javax.swing.JFrame {
-    
+
     private DefaultTableModel modelo;
-    int contador=0;
-            
+    int contador = 0;
 
     /**
      * Creates new form Tareas_Pendientes
      */
+    DefaultTableModel Tabla;
+
+    public static ArrayList<Datos_Tarea> ArrayDatos;
+
     public Tareas_Pendientes() {
         initComponents();
         Cargar();
         CargarDatos();
+        ArrayDatos = new ArrayList<Datos_Tarea>();
+        Tabla = (DefaultTableModel) Tabla_Tareas_Pendientes.getModel();
+
     }
-    
-    public void Cargar(){
-        
+
+    public void Cargar() {
+
         String datos[][] = {};
         String columna[] = {"Tarea", "Responsable", "Fecha"};
-        
-        modelo = new DefaultTableModel(datos,columna);
+
+        modelo = new DefaultTableModel(datos, columna);
         Tabla_Tareas_Pendientes.setModel(modelo);
-        
+
     }
-    
-    public void CargarDatos(){
-        
-        Datos_Tarea D;
-        
-        for (int i = 0; i < Programa_de_Tareas.contenedor.size(); i++) {
-            D=(Datos_Tarea)Programa_de_Tareas.contenedor.get(i);
+
+    public void CargarDatos() {
+
+        Datos_Tarea D = new Datos_Tarea();
+
+        for (int i = 0; i < Programa_de_Tareas.ArrayDatos.size(); i++) {
+            D = (Datos_Tarea) Programa_de_Tareas.ArrayDatos.get(i);
             modelo.insertRow(contador, new Object[]{});
             modelo.setValueAt(D.getTarea(), contador, 0);
             modelo.setValueAt(D.getResponsable(), contador, 1);
             modelo.setValueAt(D.getFecha(), contador, 2);
+
         }
-        
+
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -81,6 +90,9 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
         Tabla_Tareas_Pendientes = new javax.swing.JTable();
         Button_Finalizar_Tarea = new javax.swing.JButton();
         Button_Agregar_Tarea = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        Txt_Nombre_Documento = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -124,20 +136,35 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Generar reporte de las tareas pendientes");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Nombre documento:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Button_Agregar_Tarea)
                         .addGap(18, 18, 18)
                         .addComponent(Button_Finalizar_Tarea))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel1)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Txt_Nombre_Documento, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(92, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -150,8 +177,13 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Button_Finalizar_Tarea)
-                    .addComponent(Button_Agregar_Tarea))
-                .addContainerGap(107, Short.MAX_VALUE))
+                    .addComponent(Button_Agregar_Tarea)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Txt_Nombre_Documento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -184,6 +216,13 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Button_Finalizar_TareaActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        Diseño_de_los_Reportes D = new Diseño_de_los_Reportes(Txt_Nombre_Documento.getText(), new Date().toString(), "C:\\Users\\Miche\\Downloads\\Reporte.png", Programa_de_Tareas.ArrayDatos);
+        D.GenerarReporte_TareasPendientes();
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -214,9 +253,9 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
                 new Tareas_Pendientes().setVisible(true);
-                
+
             }
         });
     }
@@ -225,7 +264,10 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
     private javax.swing.JButton Button_Agregar_Tarea;
     private javax.swing.JButton Button_Finalizar_Tarea;
     public static javax.swing.JTable Tabla_Tareas_Pendientes;
+    private javax.swing.JTextField Txt_Nombre_Documento;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

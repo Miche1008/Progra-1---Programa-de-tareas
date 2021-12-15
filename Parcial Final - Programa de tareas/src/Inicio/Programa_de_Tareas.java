@@ -24,7 +24,7 @@ import javax.swing.table.TableColumn;
  */
 public class Programa_de_Tareas extends javax.swing.JFrame {
     
-    public static LinkedList contenedor = new LinkedList();
+    public static ArrayList ArrayDatos = new ArrayList();
     public int buscar;
     
     //DefaultTableModel Modelo = new DefaultTableModel();
@@ -189,7 +189,7 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
         String Fecha = Txt_Fecha.getText();
         
         Datos_Tarea Datos = new Datos_Tarea(Tarea, Responsable, Fecha);
-        contenedor.add(Datos);
+        ArrayDatos.add(Datos);
         
         Txt_Agregar_Tarea.setText("");
         Txt_Responsable.setText("");

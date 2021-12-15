@@ -288,11 +288,7 @@ public class Inicio_de_Sesión extends javax.swing.JFrame {
         }
         if (encontrar) {
             JOptionPane.showMessageDialog(rootPane, "Bienvenido");
-            try {
-                new Tareas_Pendientes().setVisible(true);
-            } catch (IOException ex) {
-                Logger.getLogger(Inicio_de_Sesión.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            new Tareas_Pendientes().setVisible(true);
             this.dispose();
 
         } else {
