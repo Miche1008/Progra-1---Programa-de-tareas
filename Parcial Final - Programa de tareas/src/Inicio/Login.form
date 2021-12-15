@@ -245,6 +245,7 @@
           </Properties>
           <Events>
             <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Txt_Correo_LoginMousePressed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Txt_Correo_LoginActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="Txt_Usuario_Login">

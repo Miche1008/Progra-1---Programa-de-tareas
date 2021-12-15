@@ -106,6 +106,11 @@ public class Login extends javax.swing.JFrame {
                 Txt_Correo_LoginMousePressed(evt);
             }
         });
+        Txt_Correo_Login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Txt_Correo_LoginActionPerformed(evt);
+            }
+        });
 
         Txt_Usuario_Login.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         Txt_Usuario_Login.setForeground(new java.awt.Color(204, 204, 204));
@@ -376,6 +381,10 @@ public class Login extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_Panel_Crear_UsuarioMouseClicked
+
+    private void Txt_Correo_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_Correo_LoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Txt_Correo_LoginActionPerformed
 
     /**
      * @param args the command line arguments

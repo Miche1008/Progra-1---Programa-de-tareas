@@ -6,7 +6,10 @@
 package Inicio;
 
 import java.awt.Color;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -52,7 +55,7 @@ public class Inicio_de_Sesión extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Checklist ingreso2.png"))); // NOI18N
 
-        Txt_Usuario.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        Txt_Usuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Txt_Usuario.setForeground(new java.awt.Color(204, 204, 204));
         Txt_Usuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Txt_Usuario.setText("Nombre de usuario");
@@ -126,7 +129,7 @@ public class Inicio_de_Sesión extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        Password_Field.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        Password_Field.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Password_Field.setForeground(new java.awt.Color(204, 204, 204));
         Password_Field.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Password_Field.setText("****");
@@ -285,7 +288,11 @@ public class Inicio_de_Sesión extends javax.swing.JFrame {
         }
         if (encontrar) {
             JOptionPane.showMessageDialog(rootPane, "Bienvenido");
-            new Tareas_Pendientes().setVisible(true);
+            try {
+                new Tareas_Pendientes().setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(Inicio_de_Sesión.class.getName()).log(Level.SEVERE, null, ex);
+            }
             this.dispose();
 
         } else {

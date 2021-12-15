@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -22,31 +23,33 @@ import javax.swing.table.TableColumn;
  * @author Miche
  */
 public class Programa_de_Tareas extends javax.swing.JFrame {
+    
+    public static LinkedList contenedor = new LinkedList();
+    public int buscar;
+    
+    //DefaultTableModel Modelo = new DefaultTableModel();
 
-    Tareas_Pendientes T = new Tareas_Pendientes();
-    String usuario;
+    //String usuario;
 
     /**
      * Creates new form Programa_de_Tareas
      */
-    ArrayList<Datos_Tarea> ArrayTareas;
+    //ArrayList<Datos_Tarea> ArrayTareas;
 
     public Programa_de_Tareas() {
         initComponents();
-        ArrayTareas = new ArrayList<Datos_Tarea>();
+        
+        //ArrayTareas = new ArrayList<Datos_Tarea>();
+        //Modelo.addColumn("Tarea");
+        //Modelo.addColumn("Responsable de la tarea");
+        //Modelo.addColumn("Fecha");
+        //Tabla_Agregar_Tareas.setModel(Modelo);
 
     }
-    
-     public void AgregarCheckBox(int column, JTable table) {
 
-        TableColumn tc = table.getColumnModel().getColumn(column);
-        tc.setCellEditor(table.getDefaultEditor(boolean.class));
-        tc.setCellRenderer(table.getDefaultRenderer(boolean.class));       
-    }
-
-    public Programa_de_Tareas(String usuario) {
-        this.usuario = usuario;
-    }
+    //public Programa_de_Tareas(String usuario) {
+        //this.usuario = usuario;
+    //}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,6 +60,8 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenu1 = new javax.swing.JMenu();
         Panel_Ventana_Tareas = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Txt_Agregar_Tarea = new javax.swing.JTextField();
@@ -66,6 +71,15 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         Button_Guardar_Tarea = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+
+        jMenu1.setText("Enviar a tareas pendientes");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenu1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,14 +106,17 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Ir a tareas pendientes");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Panel_Ventana_TareasLayout = new javax.swing.GroupLayout(Panel_Ventana_Tareas);
         Panel_Ventana_Tareas.setLayout(Panel_Ventana_TareasLayout);
         Panel_Ventana_TareasLayout.setHorizontalGroup(
             Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_Ventana_TareasLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Button_Guardar_Tarea)
-                .addGap(250, 250, 250))
             .addGroup(Panel_Ventana_TareasLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,7 +131,16 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
                             .addComponent(Txt_Agregar_Tarea, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Txt_Responsable, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Txt_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 165, Short.MAX_VALUE))
+                .addGap(130, 165, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_Ventana_TareasLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_Ventana_TareasLayout.createSequentialGroup()
+                        .addComponent(Button_Guardar_Tarea)
+                        .addGap(250, 250, 250))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_Ventana_TareasLayout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(39, 39, 39))))
         );
         Panel_Ventana_TareasLayout.setVerticalGroup(
             Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,7 +161,9 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addComponent(Button_Guardar_Tarea)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(21, 21, 21))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -146,7 +174,9 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Panel_Ventana_Tareas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Panel_Ventana_Tareas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
         );
 
         pack();
@@ -154,17 +184,68 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
 
     private void Button_Guardar_TareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Guardar_TareaActionPerformed
 
-        Tareas_Pendientes T = new Tareas_Pendientes();
-        T.setVisible(true);
-        String tarea = Txt_Agregar_Tarea.getText();
-        String responsable = Txt_Responsable.getText();
-        String fecha = Txt_Fecha.getText();
+        String Tarea = Txt_Agregar_Tarea.getText();
+        String Responsable = Txt_Responsable.getText();
+        String Fecha = Txt_Fecha.getText();
         
-        String Datos[] = {tarea, responsable, fecha};
+        Datos_Tarea Datos = new Datos_Tarea(Tarea, Responsable, Fecha);
+        contenedor.add(Datos);
         
-        Tareas_Pendientes.Tabla.addRow(Datos);
+        Txt_Agregar_Tarea.setText("");
+        Txt_Responsable.setText("");
+        Txt_Fecha.setText("");
         
+        //String[] Datos = new String [3];
+        
+        //Datos[0] = Txt_Agregar_Tarea.getText();
+        //Datos[1] = Txt_Responsable.getText();
+        //Datos[2] = Txt_Fecha.getText();
+        
+        //Modelo.addRow(Datos);
+        
+        
+        /*Datos_Tarea D = new Datos_Tarea();
+
+        JOptionPane.showMessageDialog(rootPane, "Tarea agregada correctamente");
+
+        Tareas_Pendientes T;
+        try {
+
+            T = new Tareas_Pendientes();
+            T.setVisible(true);
+            this.dispose();
+
+        } catch (IOException ex) {
+            Logger.getLogger(Programa_de_Tareas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        D.setTarea(Txt_Agregar_Tarea.getText());
+        D.setResponsable(Txt_Responsable.getText());
+        D.setFecha(Txt_Fecha.getText());
+
+        ArrayTareas.add(D);
+
+        //String Datos[] = {Txt_Agregar_Tarea.getText(), Txt_Responsable.getText(), Txt_Fecha.getText()};
+        //Tareas_Pendientes.Tabla.addRow(D);
+        Tabla.addRow(new Object[]{
+            D.getTarea(),
+            D.getResponsable(),
+            D.getFecha(),});
+        */
+
     }//GEN-LAST:event_Button_Guardar_TareaActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      
+        Tareas_Pendientes T;
+        T = new Tareas_Pendientes();
+        T.setVisible(true);    
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,9 +288,12 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
     public static javax.swing.JTextField Txt_Agregar_Tarea;
     public static javax.swing.JTextField Txt_Fecha;
     public static javax.swing.JTextField Txt_Responsable;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     // End of variables declaration//GEN-END:variables
 }

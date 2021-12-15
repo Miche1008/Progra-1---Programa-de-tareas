@@ -5,6 +5,20 @@
  */
 package Inicio;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -14,26 +28,44 @@ import javax.swing.table.TableColumn;
  * @author Miche
  */
 public class Tareas_Pendientes extends javax.swing.JFrame {
-
-    public static DefaultTableModel Tabla;
+    
+    private DefaultTableModel modelo;
+    int contador=0;
+            
 
     /**
      * Creates new form Tareas_Pendientes
      */
     public Tareas_Pendientes() {
         initComponents();
-        Tabla = (DefaultTableModel) Tabla_Tareas_Pendientes.getModel();
-        AgregarCheckBox(3, Tabla_Tareas_Pendientes);
+        Cargar();
+        CargarDatos();
     }
-
-    public void AgregarCheckBox(int column, JTable table) {
-
-        TableColumn tc = table.getColumnModel().getColumn(column);
-        tc.setCellEditor(table.getDefaultEditor(boolean.class));
-        tc.setCellRenderer(table.getDefaultRenderer(boolean.class));
+    
+    public void Cargar(){
+        
+        String datos[][] = {};
+        String columna[] = {"Tarea", "Responsable", "Fecha"};
+        
+        modelo = new DefaultTableModel(datos,columna);
+        Tabla_Tareas_Pendientes.setModel(modelo);
         
     }
-
+    
+    public void CargarDatos(){
+        
+        Datos_Tarea D;
+        
+        for (int i = 0; i < Programa_de_Tareas.contenedor.size(); i++) {
+            D=(Datos_Tarea)Programa_de_Tareas.contenedor.get(i);
+            modelo.insertRow(contador, new Object[]{});
+            modelo.setValueAt(D.getTarea(), contador, 0);
+            modelo.setValueAt(D.getResponsable(), contador, 1);
+            modelo.setValueAt(D.getFecha(), contador, 2);
+        }
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,8 +80,9 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Tareas_Pendientes = new javax.swing.JTable();
         Button_Finalizar_Tarea = new javax.swing.JButton();
+        Button_Agregar_Tarea = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -62,11 +95,11 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Tarea", "Responsable de la tarea", "Fecha", "Seleccionar"
+                "Tarea", "Responsable de la tarea", "Fecha"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -77,6 +110,19 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
 
         Button_Finalizar_Tarea.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Button_Finalizar_Tarea.setText("Finalizar tarea");
+        Button_Finalizar_Tarea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Finalizar_TareaActionPerformed(evt);
+            }
+        });
+
+        Button_Agregar_Tarea.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        Button_Agregar_Tarea.setText("Agregar nueva tarea");
+        Button_Agregar_Tarea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Agregar_TareaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -85,7 +131,10 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Button_Finalizar_Tarea)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(Button_Agregar_Tarea)
+                        .addGap(18, 18, 18)
+                        .addComponent(Button_Finalizar_Tarea))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel1)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -99,8 +148,10 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
                 .addGap(48, 48, 48)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(Button_Finalizar_Tarea)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Button_Finalizar_Tarea)
+                    .addComponent(Button_Agregar_Tarea))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -120,6 +171,18 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Button_Agregar_TareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Agregar_TareaActionPerformed
+
+        Programa_de_Tareas P = new Programa_de_Tareas();
+        P.setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_Button_Agregar_TareaActionPerformed
+
+    private void Button_Finalizar_TareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Finalizar_TareaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Button_Finalizar_TareaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,12 +214,15 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new Tareas_Pendientes().setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Button_Agregar_Tarea;
     private javax.swing.JButton Button_Finalizar_Tarea;
     public static javax.swing.JTable Tabla_Tareas_Pendientes;
     private javax.swing.JLabel jLabel1;

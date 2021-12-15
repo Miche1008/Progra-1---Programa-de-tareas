@@ -34,6 +34,10 @@ public class Envío_de_Correos {
         this.contraseña = contraseña;
     }    
 
+    public Envío_de_Correos(String TO) {
+        this.TO = TO;
+    }
+
         static final String SMTP_USERMANE = "ProgramadeTareasMiche@gmail.com";
         static final String SMTP_PASSWORD = "Tareas.Miche321";
 
@@ -49,7 +53,7 @@ public class Envío_de_Correos {
 
         String BODY = (", bienvenido al Programa de Tareas, ");
 
-        String BODY2 = ("Hola, has finalizado la siguiente tarea: ");
+        String BODY2 = ("Hola, has finalizado correctamente la tarea.");
 
         public void Envio_de_Correos() throws UnsupportedEncodingException, MessagingException {
 
@@ -110,7 +114,7 @@ public class Envío_de_Correos {
             Transport transport = session.getTransport();
             System.out.println(TO);
 
-            JOptionPane.showMessageDialog(null, "Por favor espere, estamos validando su correo electrónico.");
+            JOptionPane.showMessageDialog(null, "Por favor espere, estamos enviando un correo electrónico.");
 
             try {
                 transport.connect(HOST, SMTP_USERMANE, SMTP_PASSWORD);

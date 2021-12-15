@@ -7,6 +7,12 @@ public class Datos_Tarea {
      private String responsable;
      private String fecha;
 
+    public Datos_Tarea(String tarea, String responsable, String fecha) {
+        this.tarea = tarea;
+        this.responsable = responsable;
+        this.fecha = fecha;
+    }
+
     public Datos_Tarea() {
     }
 
