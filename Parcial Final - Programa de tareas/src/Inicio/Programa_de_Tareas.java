@@ -26,30 +26,14 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
     
     public static ArrayList ArrayDatos = new ArrayList();
     public int buscar;
-    
-    //DefaultTableModel Modelo = new DefaultTableModel();
-
-    //String usuario;
 
     /**
      * Creates new form Programa_de_Tareas
      */
-    //ArrayList<Datos_Tarea> ArrayTareas;
 
     public Programa_de_Tareas() {
         initComponents();
-        
-        //ArrayTareas = new ArrayList<Datos_Tarea>();
-        //Modelo.addColumn("Tarea");
-        //Modelo.addColumn("Responsable de la tarea");
-        //Modelo.addColumn("Fecha");
-        //Tabla_Agregar_Tareas.setModel(Modelo);
-
     }
-
-    //public Programa_de_Tareas(String usuario) {
-        //this.usuario = usuario;
-    //}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -70,8 +54,10 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        Button_Guardar_Tarea = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        Panel_Guadar_Tarea = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        Panel_Tareas_Pendientes = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
 
         jMenu1.setText("Enviar a tareas pendientes");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -98,71 +84,119 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Fecha:");
 
-        Button_Guardar_Tarea.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Button_Guardar_Tarea.setText("Guardar tarea");
-        Button_Guardar_Tarea.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Guardar_TareaActionPerformed(evt);
+        Panel_Guadar_Tarea.setBackground(new java.awt.Color(56, 107, 173));
+        Panel_Guadar_Tarea.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Panel_Guadar_Tarea.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Panel_Guadar_TareaMouseClicked(evt);
             }
         });
 
-        jButton1.setText("Ir a tareas pendientes");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Guardar tarea");
+
+        javax.swing.GroupLayout Panel_Guadar_TareaLayout = new javax.swing.GroupLayout(Panel_Guadar_Tarea);
+        Panel_Guadar_Tarea.setLayout(Panel_Guadar_TareaLayout);
+        Panel_Guadar_TareaLayout.setHorizontalGroup(
+            Panel_Guadar_TareaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_Guadar_TareaLayout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addGap(28, 28, 28))
+        );
+        Panel_Guadar_TareaLayout.setVerticalGroup(
+            Panel_Guadar_TareaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Panel_Guadar_TareaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        Panel_Tareas_Pendientes.setBackground(new java.awt.Color(56, 107, 173));
+        Panel_Tareas_Pendientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Panel_Tareas_Pendientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Panel_Tareas_PendientesMouseClicked(evt);
             }
         });
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Ir a tareas pendientes");
+
+        javax.swing.GroupLayout Panel_Tareas_PendientesLayout = new javax.swing.GroupLayout(Panel_Tareas_Pendientes);
+        Panel_Tareas_Pendientes.setLayout(Panel_Tareas_PendientesLayout);
+        Panel_Tareas_PendientesLayout.setHorizontalGroup(
+            Panel_Tareas_PendientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_Tareas_PendientesLayout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(19, 19, 19))
+        );
+        Panel_Tareas_PendientesLayout.setVerticalGroup(
+            Panel_Tareas_PendientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Panel_Tareas_PendientesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout Panel_Ventana_TareasLayout = new javax.swing.GroupLayout(Panel_Ventana_Tareas);
         Panel_Ventana_Tareas.setLayout(Panel_Ventana_TareasLayout);
         Panel_Ventana_TareasLayout.setHorizontalGroup(
             Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panel_Ventana_TareasLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
                 .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(Panel_Ventana_TareasLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
                         .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Txt_Agregar_Tarea, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Txt_Responsable, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Txt_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(130, 165, Short.MAX_VALUE))
+                            .addComponent(jLabel1)
+                            .addGroup(Panel_Ventana_TareasLayout.createSequentialGroup()
+                                .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel2))
+                                .addGap(18, 18, 18)
+                                .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Txt_Agregar_Tarea, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Txt_Responsable, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Txt_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 166, Short.MAX_VALUE))
+                    .addGroup(Panel_Ventana_TareasLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Panel_Tareas_Pendientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_Ventana_TareasLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_Ventana_TareasLayout.createSequentialGroup()
-                        .addComponent(Button_Guardar_Tarea)
-                        .addGap(250, 250, 250))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_Ventana_TareasLayout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(39, 39, 39))))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Panel_Guadar_Tarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(246, 246, 246))
         );
         Panel_Ventana_TareasLayout.setVerticalGroup(
             Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Panel_Ventana_TareasLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_Ventana_TareasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(41, 41, 41)
-                .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(Txt_Agregar_Tarea, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(Txt_Responsable, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Txt_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addComponent(Button_Guardar_Tarea)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(Panel_Ventana_TareasLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(Panel_Tareas_Pendientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Panel_Ventana_TareasLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(41, 41, 41)
+                        .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(Txt_Agregar_Tarea, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(Txt_Responsable, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(Panel_Ventana_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Txt_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(26, 26, 26)
+                        .addComponent(Panel_Guadar_Tarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(96, 96, 96)))
                 .addGap(21, 21, 21))
         );
 
@@ -176,14 +210,18 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Panel_Ventana_Tareas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Button_Guardar_TareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Guardar_TareaActionPerformed
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
 
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void Panel_Guadar_TareaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel_Guadar_TareaMouseClicked
+        
         String Tarea = Txt_Agregar_Tarea.getText();
         String Responsable = Txt_Responsable.getText();
         String Fecha = Txt_Fecha.getText();
@@ -195,57 +233,18 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
         Txt_Responsable.setText("");
         Txt_Fecha.setText("");
         
-        //String[] Datos = new String [3];
+        JOptionPane.showMessageDialog(rootPane, "Tarea guardada correctamente");
         
-        //Datos[0] = Txt_Agregar_Tarea.getText();
-        //Datos[1] = Txt_Responsable.getText();
-        //Datos[2] = Txt_Fecha.getText();
+    }//GEN-LAST:event_Panel_Guadar_TareaMouseClicked
+
+    private void Panel_Tareas_PendientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel_Tareas_PendientesMouseClicked
         
-        //Modelo.addRow(Datos);
-        
-        
-        /*Datos_Tarea D = new Datos_Tarea();
-
-        JOptionPane.showMessageDialog(rootPane, "Tarea agregada correctamente");
-
-        Tareas_Pendientes T;
-        try {
-
-            T = new Tareas_Pendientes();
-            T.setVisible(true);
-            this.dispose();
-
-        } catch (IOException ex) {
-            Logger.getLogger(Programa_de_Tareas.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        D.setTarea(Txt_Agregar_Tarea.getText());
-        D.setResponsable(Txt_Responsable.getText());
-        D.setFecha(Txt_Fecha.getText());
-
-        ArrayTareas.add(D);
-
-        //String Datos[] = {Txt_Agregar_Tarea.getText(), Txt_Responsable.getText(), Txt_Fecha.getText()};
-        //Tareas_Pendientes.Tabla.addRow(D);
-        Tabla.addRow(new Object[]{
-            D.getTarea(),
-            D.getResponsable(),
-            D.getFecha(),});
-        */
-
-    }//GEN-LAST:event_Button_Guardar_TareaActionPerformed
-
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-
-    }//GEN-LAST:event_jMenu1ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
         Tareas_Pendientes T;
         T = new Tareas_Pendientes();
-        T.setVisible(true);    
+        T.setVisible(true);
+        this.dispose();
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_Panel_Tareas_PendientesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -283,16 +282,18 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Button_Guardar_Tarea;
+    private javax.swing.JPanel Panel_Guadar_Tarea;
+    private javax.swing.JPanel Panel_Tareas_Pendientes;
     private javax.swing.JPanel Panel_Ventana_Tareas;
     public static javax.swing.JTextField Txt_Agregar_Tarea;
     public static javax.swing.JTextField Txt_Fecha;
     public static javax.swing.JTextField Txt_Responsable;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPopupMenu jPopupMenu1;
     // End of variables declaration//GEN-END:variables
