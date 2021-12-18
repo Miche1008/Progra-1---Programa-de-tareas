@@ -98,17 +98,6 @@ public class Diseño_de_los_Reportes {
             documento.add(Tabla_Tareas_Pendientes);
 
             documento.add(Chunk.NEWLINE);
-            /*documento.add(new Paragraph("Escanea el siguiente código QR"));
-            BarcodeQRCode códigoqr = new BarcodeQRCode("Gracias por utilizar FastChat, el software más velóz y amigable para el usuario.", 1, 1, null);
-            Image imagenqr = códigoqr.getImage();
-            imagenqr.scalePercent(300);
-            documento.add(imagenqr);
-
-            Date Fecha = new Date();
-
-            SimpleDateFormat FormatoFechaSimple = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
-
-            documento.add(new Paragraph("Fecha: " + FormatoFechaSimple.format(Fecha)));*/
 
             documento.close();
 
@@ -116,7 +105,6 @@ public class Diseño_de_los_Reportes {
 
         } catch (Exception e) {
         }
-
     }
 
 }

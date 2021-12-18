@@ -47,7 +47,15 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
         CargarDatos();
         ArrayDatos = new ArrayList<Datos_Tarea>();
         Tabla = (DefaultTableModel) Tabla_Tareas_Pendientes.getModel();
+        
+        Tareas_Pendientes TP = new Tareas_Pendientes();
+        TP.setVisible(true);
+    }
 
+    public void Mostrar_Segunda_Tabla() {
+        
+        modelo = new DefaultTableModel();
+        Tabla_Tareas_Pendientes.setModel(modelo);
     }
 
     public void Cargar() {
@@ -70,9 +78,7 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
             modelo.setValueAt(D.getTarea(), contador, 0);
             modelo.setValueAt(D.getResponsable(), contador, 1);
             modelo.setValueAt(D.getFecha(), contador, 2);
-
         }
-
     }
 
     /**
@@ -96,6 +102,8 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         Panel_Finalizar_Tarea = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        Panel_Finalizar_Todas_las_Tareas = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,6 +131,7 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabla_Tareas_Pendientes);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Nombre del documento:");
 
         Panel_Generar_Reporte.setBackground(new java.awt.Color(56, 107, 173));
@@ -185,6 +194,11 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
 
         Panel_Finalizar_Tarea.setBackground(new java.awt.Color(56, 107, 173));
         Panel_Finalizar_Tarea.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Panel_Finalizar_Tarea.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Panel_Finalizar_TareaMouseClicked(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -207,6 +221,35 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        Panel_Finalizar_Todas_las_Tareas.setBackground(new java.awt.Color(56, 107, 173));
+        Panel_Finalizar_Todas_las_Tareas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Panel_Finalizar_Todas_las_Tareas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Panel_Finalizar_Todas_las_TareasMouseClicked(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Finalizar todas las tareas");
+
+        javax.swing.GroupLayout Panel_Finalizar_Todas_las_TareasLayout = new javax.swing.GroupLayout(Panel_Finalizar_Todas_las_Tareas);
+        Panel_Finalizar_Todas_las_Tareas.setLayout(Panel_Finalizar_Todas_las_TareasLayout);
+        Panel_Finalizar_Todas_las_TareasLayout.setHorizontalGroup(
+            Panel_Finalizar_Todas_las_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Panel_Finalizar_Todas_las_TareasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        Panel_Finalizar_Todas_las_TareasLayout.setVerticalGroup(
+            Panel_Finalizar_Todas_las_TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_Finalizar_Todas_las_TareasLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -215,25 +258,26 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(Panel_Agregar_Tarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(Txt_Nombre_Documento, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(63, 63, 63))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(Panel_Generar_Reporte, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addComponent(Panel_Agregar_Tarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(Txt_Nombre_Documento, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(Panel_Generar_Reporte, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                                .addComponent(Panel_Finalizar_Todas_las_Tareas, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(Panel_Finalizar_Tarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(92, 92, 92))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(92, 92, 92))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,23 +293,20 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
                             .addComponent(Txt_Nombre_Documento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Panel_Generar_Reporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Panel_Finalizar_Tarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(90, 90, 90))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Panel_Agregar_Tarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(Panel_Generar_Reporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(Panel_Finalizar_Todas_las_Tareas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Panel_Finalizar_Tarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(Panel_Agregar_Tarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,19 +319,56 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Panel_Generar_ReporteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel_Generar_ReporteMouseClicked
-        
+
         Diseño_de_los_Reportes D = new Diseño_de_los_Reportes(Txt_Nombre_Documento.getText(), new Date().toString(), "C:\\Users\\Miche\\Downloads\\Reporte.png", Programa_de_Tareas.ArrayDatos);
         D.GenerarReporte_TareasPendientes();
-        
+
     }//GEN-LAST:event_Panel_Generar_ReporteMouseClicked
 
     private void Panel_Agregar_TareaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel_Agregar_TareaMouseClicked
-        
+
         Programa_de_Tareas P = new Programa_de_Tareas();
         P.setVisible(true);
         this.dispose();
-        
+
     }//GEN-LAST:event_Panel_Agregar_TareaMouseClicked
+
+    private void Panel_Finalizar_TareaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel_Finalizar_TareaMouseClicked
+
+        int FilaSeleccionada = Tabla_Tareas_Pendientes.getSelectedRow();
+
+        if (FilaSeleccionada >= 0) {
+
+            String Datos[] = new String[3];
+
+            Datos[0] = Tabla_Tareas_Pendientes.getValueAt(FilaSeleccionada, 0).toString();
+            Datos[1] = Tabla_Tareas_Pendientes.getValueAt(FilaSeleccionada, 1).toString();
+            Datos[2] = Tabla_Tareas_Pendientes.getValueAt(FilaSeleccionada, 2).toString();
+
+            Tareas_Finalizadas.modelo2.addRow(Datos);
+            modelo.removeRow(FilaSeleccionada);
+
+        }
+
+    }//GEN-LAST:event_Panel_Finalizar_TareaMouseClicked
+
+    private void Panel_Finalizar_Todas_las_TareasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel_Finalizar_Todas_las_TareasMouseClicked
+
+        for (int i = 0; i < Tabla_Tareas_Pendientes.getRowCount(); i++) {
+
+            String Datos[] = new String[3];
+
+            Datos[0] = Tabla_Tareas_Pendientes.getValueAt(i, 0).toString();
+            Datos[1] = Tabla_Tareas_Pendientes.getValueAt(i, 1).toString();
+            Datos[2] = Tabla_Tareas_Pendientes.getValueAt(i, 2).toString();
+
+            Tareas_Finalizadas.modelo2.addRow(Datos);
+
+        }
+
+        Mostrar_Segunda_Tabla();
+
+    }//GEN-LAST:event_Panel_Finalizar_Todas_las_TareasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -332,6 +410,7 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panel_Agregar_Tarea;
     private javax.swing.JPanel Panel_Finalizar_Tarea;
+    private javax.swing.JPanel Panel_Finalizar_Todas_las_Tareas;
     private javax.swing.JPanel Panel_Generar_Reporte;
     public static javax.swing.JTable Tabla_Tareas_Pendientes;
     private javax.swing.JTextField Txt_Nombre_Documento;
@@ -340,6 +419,7 @@ public class Tareas_Pendientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

@@ -44,8 +44,6 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        jMenu1 = new javax.swing.JMenu();
         Panel_Ventana_Tareas = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Txt_Agregar_Tarea = new javax.swing.JTextField();
@@ -58,14 +56,6 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         Panel_Tareas_Pendientes = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-
-        jMenu1.setText("Enviar a tareas pendientes");
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(jMenu1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -216,10 +206,6 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-
-    }//GEN-LAST:event_jMenu1ActionPerformed
-
     private void Panel_Guadar_TareaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel_Guadar_TareaMouseClicked
         
         String Tarea = Txt_Agregar_Tarea.getText();
@@ -238,9 +224,8 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
     }//GEN-LAST:event_Panel_Guadar_TareaMouseClicked
 
     private void Panel_Tareas_PendientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel_Tareas_PendientesMouseClicked
-        
-        Tareas_Pendientes T;
-        T = new Tareas_Pendientes();
+
+        Tareas_Pendientes T = new Tareas_Pendientes();
         T.setVisible(true);
         this.dispose();
         
@@ -294,7 +279,5 @@ public class Programa_de_Tareas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JPopupMenu jPopupMenu1;
     // End of variables declaration//GEN-END:variables
 }
